@@ -3,8 +3,9 @@ let {employedb} = require('../models/employe')
 async function employeInsert(req,res){
     try{
         let {name,email,mobile} = req.body
+        console.log(req.body)
         let emailExist = await employedb.findOne({email:email})
-        console.log(emailExist)
+        // console.log(emailExist)
         if(emailExist){
             return res.status(409).json({message:"email already exist"})
         }

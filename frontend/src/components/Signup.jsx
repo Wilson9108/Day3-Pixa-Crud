@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react"
 import FetchEmployees from "./FetchEmployees";
-export default function () {
+export default function Signup() {
+    let url = import.meta.env.VITE_BACKEND_URL
+    console.log(url)
     const [employeData, setEmployeData] = useState([])
     const [inputValues, setInputValues] = useState({
         name: "",
@@ -46,7 +48,7 @@ export default function () {
     //handle signup 
     async function handleSignup() {
         try {
-            let response = await fetch('http://localhost:2025/employe/api/insert', {
+            let response = await fetch(`${url}/employe/api/insert`, {
                 method: "POST",
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(inputValues)
